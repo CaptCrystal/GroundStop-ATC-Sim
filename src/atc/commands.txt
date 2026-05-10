@@ -1,0 +1,7 @@
+/[callsign] pa = pushback approved
+/[callsign] [02 or anylocation like gate]t[space]ua = taxi to 02 via U AAL123
+/[callsign] h02 = hold short of runway 2
+/[callsign] c02 = cross runway 2
+/[callsign] to = contact tower
+/[callsign] h = hold position
+/[callsign] c02 = cross runway 02

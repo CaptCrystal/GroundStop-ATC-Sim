@@ -1,0 +1,243 @@
+{
+  "site": {
+    "name": "GroundStop",
+    "tagline": "Airport Ground Control Simulator",
+    "price": "15",
+    "downloadUrl": "https://YOUR_DOWNLOAD_LINK_HERE"
+  },
+
+  "hero": {
+    "description": "Realistic airport ground control. Manage pushbacks, taxi routes, and runway operations on an authentic ASDE-X style radar display.",
+    "stats": [
+      { "value": "40+", "label": "Aircraft Types" },
+      { "value": "20+", "label": "ATC Commands" },
+      { "value": "100%", "label": "Free Updates" }
+    ]
+  },
+
+  "features": [
+    { "title": "ASDE-X Radar Display",  "desc": "Authentic surface movement radar with aircraft data tags, modeled after real ASDE-X systems used at major airports." },
+    { "title": "Smart Pathfinding",      "desc": "A* routing through complex taxiway networks. Aircraft navigate realistic routes and automatically hold short of runways." },
+    { "title": "Real Airport Data",      "desc": "Precise layouts from GeoJSON — every taxiway, runway, ramp, and gate based on actual airport geometry." },
+    { "title": "40+ Aircraft Types",     "desc": "CRJ7s to 737s — each with unique performance specs, taxi speeds, wingspan categories, and realistic behavior." },
+    { "title": "Radio Communications",   "desc": "Live text-to-speech pilot readbacks with authentic ATC phraseology. Type commands exactly like a real ground controller." },
+    { "title": "Conflict Prevention",    "desc": "Runway incursion prevention, automatic hold short sequencing, and ground conflict detection built into the simulation core." }
+  ],
+
+  "pricing": {
+    "label": "Full Version",
+    "includes": [
+      "Full simulator, no limitations",
+      "All current airports included",
+      "All 40+ aircraft types",
+      "Free updates for current version",
+      "Discord community access",
+      "Windows & Mac support"
+    ]
+  },
+
+  "roadmap": [
+    { "done": true,  "label": "Automatic Route Assignment",   "desc": "Realistic departure routes with SIDs and exit fixes" },
+    { "done": true,  "label": "Smart Taxiway Pathfinding",    "desc": "A* routing through complex taxiway networks with automatic hold short" },
+    { "done": true,  "label": "Pushback & Runway Operations", "desc": "Full pushback sequencing, runway incursion prevention, and crossing commands" },
+    { "done": true,  "label": "Radio Communications (TTS)",   "desc": "Text-to-speech pilot readbacks with authentic phraseology and radio static" },
+    { "done": false, "progress": true, "label": "Arrival Operations", "desc": "Landing clearances, approach management, gate assignment — in progress" },
+    { "done": false, "label": "Live Weather System",          "desc": "Dynamic METAR integration and real-time weather conditions" },
+    { "done": false, "label": "More Airports",                "desc": "Additional airports with detailed ground layouts and tailored scenarios" }
+  ],
+
+  "docs": {
+    "sections": [
+      {
+        "id": "getting-started",
+        "title": "Getting Started",
+        "blocks": [
+          { "type": "p", "text": "Launch GroundStop and a scenario loads automatically. Aircraft spawn at gates and request clearances — your job is to issue them and keep traffic moving safely." },
+          { "type": "pre", "text": "1.  Aircraft requests pushback (automatic)\n2.  100 pa           — pushback approved\n3.  Aircraft pushes back ~8s, then holds\n4.  100 r20ua        — taxi to runway 20 via Uniform, Alpha\n5.  100 ct           — contact tower when ready" },
+          { "type": "note", "text": "Use the flight number only — 100 not ENY3639. The yellow number appears above each aircraft on the radar." }
+        ]
+      },
+      {
+        "id": "command-bar",
+        "title": "Command Bar",
+        "blocks": [
+          { "type": "p", "text": "Press the semicolon key ; to open the command bar. Format is always [number] [command]. Press Enter to send, Escape to cancel." },
+          { "type": "pre", "text": "100 pa\n100 r20ua\n100 h20\n\nhelp     show available commands\nclear    clear the log\nquit     exit" },
+          { "type": "list", "items": [
+            "Tab — auto-complete callsign (cycles through matches)",
+            "Up / Down — navigate command history (last 20 commands)",
+            "Left / Right — move cursor within command",
+            "Escape — clear and close command bar"
+          ]}
+        ]
+      },
+      {
+        "id": "commands",
+        "title": "All Commands",
+        "blocks": [
+          { "type": "table", "headers": ["Command", "Example", "Description"], "rows": [
+            ["pa",           "100 pa",      "Pushback approved"],
+            ["r[rwy][via]",  "100 r20ua",   "Taxi to runway via taxiways"],
+            ["rp[via]",      "100 rpau",    "Taxi to parking/gate via taxiways"],
+            ["h[rwy]",       "100 h20",     "Hold short of runway 20"],
+            ["h",            "100 h",       "Hold position immediately"],
+            ["cr[rwy]",      "100 cr20",    "Cross runway 20"],
+            ["ex[rwy]",      "100 ex20",    "Expect runway 20 for departure"],
+            ["sq[XXXX]",     "100 sq1854",  "Assign squawk code"],
+            ["sqc",          "100 sqc",     "Toggle squawk Mode C on/off"],
+            ["ct",           "100 ct",      "Contact tower (hand off)"],
+            ["x",            "100 x",       "Delete aircraft from simulation"]
+          ]}
+        ]
+      },
+      {
+        "id": "cmd-pa",
+        "title": "Pushback — pa",
+        "parent": "commands",
+        "blocks": [
+          { "type": "p", "text": "Clears an aircraft to push back from its gate. Aircraft must be in PARKED state." },
+          { "type": "pre", "text": "100 pa" },
+          { "type": "p", "text": "The aircraft backs away from the gate over ~8 seconds, then stops in HOLDING state and waits for a taxi clearance." },
+          { "type": "warn", "text": "Only works on PARKED aircraft. Any other state returns unable." }
+        ]
+      },
+      {
+        "id": "cmd-taxi",
+        "title": "Taxi — r[rwy][via]",
+        "parent": "commands",
+        "blocks": [
+          { "type": "p", "text": "Taxi clearance to a runway via specified taxiways. Aircraft must be in HOLDING state." },
+          { "type": "pre", "text": "100 r20ua     runway 20 via Uniform, Alpha\n100 r02abc    runway 02 via Alpha, Bravo, Charlie" },
+          { "type": "note", "text": "One letter per taxiway — they are converted to phonetics in the pilot readback." }
+        ]
+      },
+      {
+        "id": "cmd-parking",
+        "title": "Taxi to Parking — rp[via]",
+        "parent": "commands",
+        "blocks": [
+          { "type": "p", "text": "Clears an arrival aircraft to taxi to its parking gate via specified taxiways." },
+          { "type": "pre", "text": "100 rp        taxi to parking (auto-route)\n100 rpau      taxi to parking via Alpha, Uniform" }
+        ]
+      },
+      {
+        "id": "cmd-hold",
+        "title": "Hold Short — h[rwy]",
+        "parent": "commands",
+        "blocks": [
+          { "type": "p", "text": "Stops the aircraft before a runway hold short bar. Used to prevent runway incursions." },
+          { "type": "pre", "text": "100 h20" }
+        ]
+      },
+      {
+        "id": "cmd-cross",
+        "title": "Cross Runway — cr[rwy]",
+        "parent": "commands",
+        "blocks": [
+          { "type": "p", "text": "Clears an aircraft to cross a runway." },
+          { "type": "pre", "text": "100 cr20" },
+          { "type": "warn", "text": "Verify no landing traffic first — the sim does not auto-block crossings for arrivals." }
+        ]
+      },
+      {
+        "id": "cmd-combined",
+        "title": "Combined Commands",
+        "parent": "commands",
+        "blocks": [
+          { "type": "p", "text": "Chain multiple commands in a single input. The aircraft receives a single readback for all of them." },
+          { "type": "pre", "text": "100 pa ex20        pushback + expect runway 20\n100 cr20 r14fg     cross runway 20, then taxi to 14 via F, G" }
+        ]
+      },
+      {
+        "id": "states",
+        "title": "Aircraft States",
+        "blocks": [
+          { "type": "table", "headers": ["State", "Description"], "rows": [
+            ["PARKED",   "At gate, no movement. Waiting for pushback clearance."],
+            ["PUSHBACK", "Moving backwards from gate at ~2 kts for ~8 seconds."],
+            ["HOLDING",  "Stopped, engines running. Waiting for taxi clearance."],
+            ["TAXI",     "Moving on taxiways at up to 25 kts depending on aircraft."],
+            ["APPROACH", "On final approach, descending toward the runway."],
+            ["LANDING",  "Touching down and rolling out on the runway."],
+            ["TAKEOFF",  "On runway, accelerating for departure."],
+            ["DEPARTED", "Airborne — will be removed from the simulation shortly."]
+          ]},
+          { "type": "pre", "text": "PARKED → (pa) → PUSHBACK → HOLDING → (r…) → TAXI → (ct) → TAKEOFF → DEPARTED\n\nAPPROACH → LANDING → HOLDING → (rp…) → TAXI → PARKED" }
+        ]
+      },
+      {
+        "id": "radar",
+        "title": "Reading the Radar",
+        "blocks": [
+          { "type": "p", "text": "The display is modeled after ASDE-X, the surface movement radar system at major US airports." },
+          { "type": "table", "headers": ["Element", "Description"], "rows": [
+            ["Flight number",  "Yellow number above the icon — use this in commands."],
+            ["Callsign",       "Airline + flight number (e.g. ENY3639). Shown in the data tag."],
+            ["State tag",      "Current aircraft state shown in the data tag."],
+            ["Data tag",       "Click aircraft to toggle data tag visibility."],
+            ["Leader line",    "Line from aircraft to its data tag. Length is adjustable in settings."]
+          ]},
+          { "type": "note", "text": "Ctrl+Click an aircraft to open its flight plan panel. Right-click to open the aircraft editor." }
+        ]
+      },
+      {
+        "id": "radio",
+        "title": "Radio Communications",
+        "blocks": [
+          { "type": "p", "text": "All clearances appear in the radio log and are spoken via text-to-speech. Pilots respond with realistic readbacks after a short delay." },
+          { "type": "pre", "text": "PILOT  ENY3639, request pushback\nGND    ENY3639, push and start approved, face east\nPILOT  Push and start, face east, ENY3639\nGND    ENY3639, taxi runway 20 via Uniform, Alpha\nPILOT  Runway 20 via Uniform Alpha, ENY3639" },
+          { "type": "p", "text": "Enable voice recognition (PTT) to speak commands instead of typing. Default PTT key is Left Shift." }
+        ]
+      },
+      {
+        "id": "shortcuts",
+        "title": "Keyboard Shortcuts",
+        "blocks": [
+          { "type": "table", "headers": ["Key", "Action"], "rows": [
+            [";",              "Open command bar"],
+            ["Enter",          "Send command"],
+            ["Escape",         "Cancel / return to menu"],
+            ["Tab",            "Auto-complete callsign"],
+            ["Up / Down",      "Command history (in bar) or pan camera"],
+            ["Left / Right",   "Pan camera"],
+            ["+ or =",         "Zoom in"],
+            ["-",              "Zoom out"],
+            ["Mouse wheel",    "Zoom toward cursor"],
+            ["Right-click drag","Pan camera"],
+            ["F2",             "Toggle flight strips window"],
+            ["Left Shift",     "PTT — hold to speak command (voice recognition)"]
+          ]},
+          { "type": "note", "text": "Data tag position: press a Numpad direction key (8/6/2/4/9/3/1/7) then click an aircraft to anchor its tag." }
+        ]
+      },
+      {
+        "id": "tips",
+        "title": "Tips",
+        "blocks": [
+          { "type": "list", "items": [
+            "Issue pushback + expect runway in one command: 100 pa ex20",
+            "Tab-complete callsigns — type part of the number and press Tab",
+            "Up arrow recalls the last command — useful for repeated clearances",
+            "Use 100 h immediately if a conflict develops — hold position is instant",
+            "Arrivals use rp (taxi to parking) instead of r (taxi to runway)",
+            "Right-click any aircraft to edit its squawk, callsign, or other fields"
+          ]}
+        ]
+      },
+      {
+        "id": "troubleshooting",
+        "title": "Troubleshooting",
+        "blocks": [
+          { "type": "table", "headers": ["Problem", "Solution"], "rows": [
+            ["Aircraft not found",       "Use the yellow number above the icon, not the full callsign."],
+            ["'Unable' on pushback",     "Aircraft must be in PARKED state to accept a pushback clearance."],
+            ["Aircraft won't taxi",      "Aircraft must be in HOLDING state. Wait for pushback to complete."],
+            ["No TTS audio",             "Check your audio device in Settings. Requires a valid output device."],
+            ["Route not found",          "Try different taxiway letters or check the taxiway labels overlay."],
+            ["Voice not recognized",     "Hold PTT key, speak clearly, release. Check microphone in Settings."]
+          ]}
+        ]
+      }
+    ]
+  }
+}

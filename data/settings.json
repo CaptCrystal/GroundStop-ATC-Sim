@@ -1,0 +1,14 @@
+{
+  "time_settings": 0,
+  "sound_enabled": true,
+  "music_volume": 0.7,
+  "sfx_volume": 0.8,
+  "voice_commands_enabled": true,
+  "deepgram_api_key": "9469c9437868b0989ad60cffdc7c9549b174b7df",
+  "enable_tts": true,
+  "enable_radio_static": true,
+  "tts_model_dir": "data/models/kokoro-en-v0_19",
+  "tts_model_type": "kokoro",
+  "tts_speed": 1.5,
+  "tts_num_threads": 2
+}

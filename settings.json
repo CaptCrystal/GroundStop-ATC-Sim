@@ -1,0 +1,22 @@
+{
+  "sim_speed": 1.0,
+  "traffic_density": 5,
+  "spawn_rate": 10,
+  "show_labels": true,
+  "show_taxiways": true,
+  "realistic_radio": true,
+  "radio_audio": true,
+  "auto_pause": true,
+  "difficulty": 1,
+  "weather": 0,
+  "time_settings": 1,
+  "leader_line_length": 30,
+  "show_helpfiles": false,
+  "enable_tts": true,
+  "show_past_transmissions": true,
+  "voice_commands_enabled": true,
+  "deepgram_api_key": "9469c9437868b0989ad60cffdc7c9549b174b7df",
+  "ptt_key_code": 1073742049,
+  "mic_device_index": -1,
+  "speaker_device_index": -1
+}

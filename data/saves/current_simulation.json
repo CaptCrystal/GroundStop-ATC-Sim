@@ -1,0 +1,103 @@
+{
+  "metadata": {
+    "timestamp": 1772671319.9118986,
+    "datetime": "2026-03-05T00:41:59.911898Z",
+    "version": "1.0",
+    "airport_code": "KSGF",
+    "airport_name": "Springfield-Branson National Airport"
+  },
+  "simulation_state": {
+    "elapsed_time": 0.0,
+    "is_paused": false,
+    "time_acceleration": 1.0,
+    "camera_x": -68,
+    "camera_y": 160,
+    "zoom": 1.0
+  },
+  "aircraft_data": {
+    "aircraft": [
+      {
+        "callsign": "ENY895",
+        "flight_number": "895",
+        "aircraft_type": "E170",
+        "airline": "ENY",
+        "state": "parked",
+        "position": [
+          37.239958,
+          -93.395293
+        ],
+        "heading": 282,
+        "speed": 0.0,
+        "gate": "Gate 5",
+        "beacon": "4356",
+        "cid": 780,
+        "destination": "KORD",
+        "route": [],
+        "expected_runway": null,
+        "show_datatag": true,
+        "tag_direction": 8,
+        "pushback_requested": true,
+        "taxi_requested": false,
+        "cleared_to_pushback": false,
+        "cleared_to_taxi": false
+      },
+      {
+        "callsign": "ENY86",
+        "flight_number": "86",
+        "aircraft_type": "CRJ9",
+        "airline": "ENY",
+        "state": "holding",
+        "position": [
+          37.245342662888646,
+          -93.38493446511598
+        ],
+        "heading": 203.7964000000031,
+        "speed": 0,
+        "gate": "Gate 7",
+        "beacon": "7720",
+        "cid": 555,
+        "destination": null,
+        "route": [],
+        "expected_runway": "02",
+        "show_datatag": true,
+        "tag_direction": 8,
+        "pushback_requested": false,
+        "taxi_requested": true,
+        "cleared_to_pushback": false,
+        "cleared_to_taxi": true
+      }
+    ],
+    "spawn_rates": {
+      "dep_spawn_rate": 15,
+      "arr_spawn_rate": 15
+    },
+    "next_pushback_times": {}
+  },
+  "atc_data": {
+    "command_history": [],
+    "last_callsign": "ENY86",
+    "tower_frequency": 118.1,
+    "ground_frequency": 121.9
+  },
+  "weather_data": {
+    "metar": "",
+    "temperature": null,
+    "wind_speed": null,
+    "wind_direction": null,
+    "visibility": null,
+    "altimeter": null
+  },
+  "asde_config": {
+    "departure_runways": [
+      "02"
+    ],
+    "arrival_runways": [
+      "02"
+    ],
+    "active_runways": [
+      "02"
+    ],
+    "leader_line": 30,
+    "metar_cache": []
+  }
+}

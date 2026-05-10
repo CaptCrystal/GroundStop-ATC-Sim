@@ -1,0 +1,35 @@
+ATC Command Reference
+=====================
+
+Command Format: [number] [command] [args...]
+Use just the flight number (e.g., 123 instead of AAL123)
+
+Currently Supported Commands:
+- taxi - Issue taxi clearance
+- hold - Hold short of runway
+- cross - Cross runway clearance
+- pushback - Approve pushback
+- contact - Contact frequency
+
+Built-in Shortcuts:
+- pa = pushback approved
+- pb = pushback
+- t = taxi
+- h = hold
+- c = cross
+- ct = contact
+- h2 = hold runway 2
+- c2 = cross runway 2
+- cto = contact tower
+
+Usage Examples:
+- 123 pa → "123, pushback approved"
+- 123 taxi gate5 → "123, taxi to GATE5 via taxiway"
+- 123 h2 → "123, hold short of runway 2"
+- 123 c2 → "123, cross runway 2"
+- 123 contact 121.9 → "123, contact 121.9"
+
+Special Commands (no number needed):
+- help
+- shortcuts
+- clear

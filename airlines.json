@@ -1,0 +1,275 @@
+[
+    {
+        "name": "American Airlines",
+        "airline_icao": "AAL",
+        "category": "major",
+        "callsign": "AMERICAN",
+        "pronunciation": "uh-MARE-ih-kun"
+    },
+    {
+        "name": "Delta Air Lines",
+        "airline_icao": "DAL",
+        "category": "major",
+        "callsign": "DELTA",
+        "pronunciation": "DELL-tuh"
+    },
+    {
+        "name": "United Airlines",
+        "airline_icao": "UAL",
+        "category": "major",
+        "callsign": "UNITED",
+        "pronunciation": "you-NIGHT-ed"
+    },
+    {
+        "name": "Southwest Airlines",
+        "airline_icao": "SWA",
+        "category": "major",
+        "callsign": "SOUTHWEST",
+        "pronunciation": "south-WEST"
+    },
+    {
+        "name": "Alaska Airlines",
+        "airline_icao": "ASA",
+        "category": "major",
+        "callsign": "ALASKA",
+        "pronunciation": "uh-LASS-kuh"
+    },
+    {
+        "name": "JetBlue Airways",
+        "airline_icao": "JBU",
+        "category": "major",
+        "callsign": "JETBLUE",
+        "pronunciation": "JET-blue"
+    },
+    {
+        "name": "Spirit Airlines",
+        "airline_icao": "NKS",
+        "category": "major",
+        "callsign": "SPIRIT WINGS",
+        "pronunciation": "SPEER-it wings"
+    },
+    {
+        "name": "Frontier Airlines",
+        "airline_icao": "FFT",
+        "category": "major",
+        "callsign": "FRONTIER FLIGHT",
+        "pronunciation": "fron-TEER flight"
+    },
+    {
+        "name": "Allegiant Air",
+        "airline_icao": "AAY",
+        "category": "major",
+        "callsign": "ALLEGIANT",
+        "pronunciation": "uh-LEE-junt"
+    },
+    {
+        "name": "Hawaiian Airlines",
+        "airline_icao": "HAL",
+        "category": "major",
+        "callsign": "HAWAIIAN",
+        "pronunciation": "huh-WHY-en"
+    },
+    {
+        "name": "Sun Country Airlines",
+        "airline_icao": "SCX",
+        "category": "major",
+        "callsign": "SUN COUNTRY",
+        "pronunciation": "sun CUN-tree"
+    },
+    {
+        "name": "SkyWest Airlines",
+        "airline_icao": "SKW",
+        "category": "regional",
+        "callsign": "SKYWEST",
+        "pronunciation": "SKY-west"
+    },
+    {
+        "name": "Republic Airways",
+        "airline_icao": "RPA",
+        "category": "regional",
+        "callsign": "BRICKYARD",
+        "pronunciation": "BRICK-yard"
+    },
+    {
+        "name": "Endeavor Air",
+        "airline_icao": "EDV",
+        "category": "regional",
+        "callsign": "ENDEAVOR",
+        "pronunciation": "en-DEV-er"
+    },
+    {
+        "name": "Envoy Air",
+        "airline_icao": "ENY",
+        "category": "regional",
+        "callsign": "ENVOY",
+        "pronunciation": "EN-voy"
+    },
+    {
+        "name": "Mesa Airlines",
+        "airline_icao": "ASH",
+        "category": "regional",
+        "callsign": "AIR SHUTTLE",
+        "pronunciation": "air SHUT-tul"
+    },
+    {
+        "name": "PSA Airlines",
+        "airline_icao": "JIA",
+        "category": "regional",
+        "callsign": "BLUE STREAK",
+        "pronunciation": "blue STREAK"
+    },
+    {
+        "name": "Piedmont Airlines",
+        "airline_icao": "PDT",
+        "category": "regional",
+        "callsign": "PIEDMONT",
+        "pronunciation": "PEED-mont"
+    },
+    {
+        "name": "CommutAir",
+        "airline_icao": "UCA",
+        "category": "regional",
+        "callsign": "COMMUTAIR",
+        "pronunciation": "COM-mute-air"
+    },
+    {
+        "name": "Air Wisconsin",
+        "airline_icao": "AWI",
+        "category": "regional",
+        "callsign": "WISCONSIN",
+        "pronunciation": "wiss-CON-sin"
+    },
+    {
+        "name": "Silver Airways",
+        "airline_icao": "SIL",
+        "category": "regional",
+        "callsign": "SILVER WINGS",
+        "pronunciation": "SIL-ver wings"
+    },
+    {
+        "name": "Cape Air",
+        "airline_icao": "KAP",
+        "category": "regional",
+        "callsign": "CAIR",
+        "pronunciation": "CARE"
+    },
+    {
+        "name": "FedEx Express",
+        "airline_icao": "FDX",
+        "category": "cargo",
+        "callsign": "FEDEX",
+        "pronunciation": "FEE-deks"
+    },
+    {
+        "name": "UPS Airlines",
+        "airline_icao": "UPS",
+        "category": "cargo",
+        "callsign": "UPS",
+        "pronunciation": "you-pee-ess"
+    },
+    {
+        "name": "Amazon Air",
+        "airline_icao": "MZN",
+        "category": "cargo",
+        "callsign": "PRIME AIR",
+        "pronunciation": "prime air"
+    },
+    {
+        "name": "Atlas Air",
+        "airline_icao": "GTI",
+        "category": "cargo",
+        "callsign": "GIANT",
+        "pronunciation": "JYE-ant"
+    },
+    {
+        "name": "ABX Air",
+        "airline_icao": "ABX",
+        "category": "cargo",
+        "callsign": "ABEX",
+        "pronunciation": "AY-bex"
+    },
+    {
+        "name": "Kalitta Air",
+        "airline_icao": "CKS",
+        "category": "cargo",
+        "callsign": "CONNIE",
+        "pronunciation": "CON-ee"
+    },
+    {
+        "name": "Southern Air",
+        "airline_icao": "SOO",
+        "category": "cargo",
+        "callsign": "SOUTHERN AIR",
+        "pronunciation": "SUTH-ern air"
+    },
+    {
+        "name": "Air Transport International",
+        "airline_icao": "ATN",
+        "category": "cargo",
+        "callsign": "AIR TRANSPORT",
+        "pronunciation": "air TRANS-port"
+    },
+    {
+        "name": "Omni Air International",
+        "airline_icao": "OAE",
+        "category": "charter",
+        "callsign": "OMNI-EXPRESS",
+        "pronunciation": "OM-nee express"
+    },
+    {
+        "name": "iAero Airways",
+        "airline_icao": "SWQ",
+        "category": "charter",
+        "callsign": "SWIFTFLIGHT",
+        "pronunciation": "SWIFT-flight"
+    },
+    {
+        "name": "GlobalX Air",
+        "airline_icao": "GXA",
+        "category": "charter",
+        "callsign": "GLOBAL CROSSING",
+        "pronunciation": "GLOBE-ul CROSS-ing"
+    },
+    {
+        "name": "World Atlantic Airlines",
+        "airline_icao": "WAL",
+        "category": "charter",
+        "callsign": "WORLD ATLANTIC",
+        "pronunciation": "world at-LAN-tic"
+    },
+    {
+        "name": "NetJets",
+        "airline_icao": "EJA",
+        "category": "charter",
+        "callsign": "EXECJET",
+        "pronunciation": "EX-eck-jet"
+    },
+    {
+        "name": "Flexjet",
+        "airline_icao": "LXJ",
+        "category": "charter",
+        "callsign": "FLEXJET",
+        "pronunciation": "FLEX-jet"
+    },
+    {
+        "name": "Wheels Up",
+        "airline_icao": "WUP",
+        "category": "charter",
+        "callsign": "WHEELS UP",
+        "pronunciation": "wheels up"
+    },
+    {
+        "name": "Jet Linx Aviation",
+        "airline_icao": "JTL",
+        "category": "charter",
+        "callsign": "JET LINX",
+        "pronunciation": "jet LINKS"
+    },
+    {
+        "name": "Private",
+        "airline_icao": "N",
+        "category": "private",
+        "callsign": "NOVEMBER",
+        "pronunciation": "NOVEMBER"
+    }
+]

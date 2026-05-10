@@ -1,0 +1,24 @@
+AsdeSim/
+├── src/
+│   ├── core/
+│   │   ├── aircraft.py          # Aircraft entities and physics
+│   │   ├── airport.py           # Airport layout from GeoJSON
+│   │   ├── simulation.py        # Main simulation engine
+│   │   └── pathfinding.py       # A* routing on taxiway network
+│   ├── atc/
+│   │   ├── ground_control.py    # Ground controller logic
+│   │   ├── clearances.py        # Clearance system
+│   │   └── phraseology.py       # Standard ATC communications
+│   ├── rendering/
+│   │   ├── renderer.py          # Pygame rendering engine
+│   │   ├── camera.py            # Pan/zoom controls
+│   │   └── ui.py                # UI elements
+│   └── utils/
+│       ├── coordinates.py       # Lat/lon transformations
+│       └── geojson_parser.py    # Parse airport GeoJSON
+├── data/
+│   └── airports/
+│       └── example_airport.geojson
+├── main.py
+├── requirements.txt
+└── README.md
