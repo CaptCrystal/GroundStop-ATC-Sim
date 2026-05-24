@@ -2003,6 +2003,7 @@ class Aircraft(LocationAwareness):
         runway_exits = self.airport_data.get('runway_exits', [])
         expected_rwy = getattr(self, 'expected_runway', None)
         if expected_rwy and runway_exits:
+            lon_scale = math.cos(math.radians(lat))
             for rexit in runway_exits:
                 if rexit.get('runway') != expected_rwy:
                     continue
@@ -2016,8 +2017,10 @@ class Aircraft(LocationAwareness):
                     continue
                 dlat = ex_lat - lat
                 dlon = ex_lon - lon
+                dlat_m = dlat * 111000.0
+                dlon_m = dlon * 111000.0 * lon_scale
                 # Forward distance from current position to this exit
-                fwd_m = (dlat * math.cos(heading_rad) + dlon * math.sin(heading_rad)) * 111000.0
+                fwd_m = dlat_m * math.cos(heading_rad) + dlon_m * math.sin(heading_rad)
                 if 0.0 <= fwd_m <= lookahead_m and fwd_m < best_fwd_m:
                     best_fwd_m = fwd_m
                     best_taxiway = taxiway_letter
@@ -4802,7 +4805,7 @@ class AircraftManager:
             return
 
         # Build a lookup of arrival_procedures keyed by runway name
-        procedures = self.airport_data.get('arrival_procedures', [])
+        procedures = self._get_arrival_procedures()
         proc_by_runway = {p['runway']: p for p in procedures if isinstance(p, dict) and 'runway' in p}
 
         # Filter to only runways that have a procedure defined; fall back to any active runway
@@ -4927,6 +4930,50 @@ class AircraftManager:
                 f"{aircraft.get_callsign()}, {arrival_runway} {approach_type} approach, gate {assigned_gate}",
                 frequency='tower'
             )
+
+    def _get_arrival_procedures(self) -> list:
+        """Normalize arrival procedures from current airport schema.
+
+        Supports both current `arrival_procedures` and legacy `arrivals_config`.
+        """
+        procedures = self.airport_data.get('arrival_procedures', [])
+        normalized = []
+
+        if isinstance(procedures, dict):
+            procedures = [procedures]
+
+        for proc in procedures:
+            if isinstance(proc, dict) and proc.get('runway'):
+                normalized.append(proc.copy())
+
+        arrivals_config = self.airport_data.get('arrivals_config')
+        if isinstance(arrivals_config, dict):
+            runway_cfg = arrivals_config.get('runway')
+            if isinstance(runway_cfg, dict):
+                runway_name = runway_cfg.get('runway_name') or runway_cfg.get('runway')
+                if runway_name and not any(p.get('runway') == runway_name for p in normalized):
+                    normalized.append({
+                        'runway': runway_name,
+                        'approach_heading': runway_cfg.get('direction'),
+                        'spawn_location': runway_cfg.get('spawn_location'),
+                        'spawn_altitude_ft': arrivals_config.get('spawn_altitude_ft', 3000.0),
+                        'approach_type': arrivals_config.get('approach_type', 'visual')
+                    })
+            elif isinstance(runway_cfg, list):
+                for runway_entry in runway_cfg:
+                    if not isinstance(runway_entry, dict):
+                        continue
+                    runway_name = runway_entry.get('runway_name') or runway_entry.get('runway')
+                    if runway_name and not any(p.get('runway') == runway_name for p in normalized):
+                        normalized.append({
+                            'runway': runway_name,
+                            'approach_heading': runway_entry.get('direction'),
+                            'spawn_location': runway_entry.get('spawn_location'),
+                            'spawn_altitude_ft': arrivals_config.get('spawn_altitude_ft', 3000.0),
+                            'approach_type': arrivals_config.get('approach_type', 'visual')
+                        })
+
+        return normalized
 
     def _compute_approach_spawn(self, touchdown_lat: float, touchdown_lon: float,
                                 approach_heading: float, nm: float = 5.0):

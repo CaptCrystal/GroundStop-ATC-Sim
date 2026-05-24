@@ -430,6 +430,18 @@ class UIMixin:
 
         # Draw arrival spawn points and approach heading arrows from arrival_procedures
         arrival_procedures = self.airport_data.get('arrival_procedures', [])
+        if not arrival_procedures:
+            arrivals_config = self.airport_data.get('arrivals_config', {})
+            if isinstance(arrivals_config, dict):
+                runway_cfg = arrivals_config.get('runway')
+                if isinstance(runway_cfg, dict):
+                    arrival_procedures = [{
+                        'runway': runway_cfg.get('runway_name') or runway_cfg.get('runway', ''),
+                        'spawn_location': runway_cfg.get('spawn_location'),
+                        'approach_heading': runway_cfg.get('direction'),
+                        'approach_type': arrivals_config.get('approach_type', 'visual')
+                    }]
+
         for proc in arrival_procedures:
             if not isinstance(proc, dict):
                 continue
